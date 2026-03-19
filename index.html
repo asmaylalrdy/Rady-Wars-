@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rady Wars | حروب الرضي</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4b5320">
+</head>
+<body>
+    <header class="status-bar">
+        <div class="rank-box">
+            <span id="rank-display">الرتبة: ملازم</span>
+        </div>
+        <div class="resources">
+            <div class="res">💰 <span id="gold-count">500</span></div>
+            <div class="res">⚙️ <span id="iron-count">200</span></div>
+        </div>
+    </header>
+
+    <main class="battlefield">
+        <div class="base-container">
+            <div class="base-icon">🏰</div>
+            <h1 class="base-name">قاعدة الرضي الحربية</h1>
+            <div class="army-stats">
+                <span>🪖 قوة المشاة: <b id="army-count">0</b></span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="command-panel">
+        <button onclick="trainSoldier()" class="cmd-btn">
+            <span class="icon">🎖️</span>
+            <span class="text">تدريب جندي</span>
+            <small>(50 ذهب)</small>
+        </button>
+        
+        <button onclick="upgradeBase()" class="cmd-btn">
+            <span class="icon">🛠️</span>
+            <span class="text">تطوير القاعدة</span>
+            <small>(200 حديد)</small>
+        </button>
+
+        <button onclick="startMission()" class="cmd-btn attack">
+            <span class="icon">⚔️</span>
+            <span class="text">غزو منطقة</span>
+        </button>
+    </footer>
+
+    <script src="game.js"></script>
+</body>
+</html>
