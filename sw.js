@@ -1,4 +1,4 @@
-const cacheName = 'rady-wars-v1';
+const cacheName = 'rady-wars-v1.1'; // تحديث الإصدار لفرض مسح الـ Cache القديم
 const assets = [
     './',
     './index.html',
