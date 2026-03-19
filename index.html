@@ -2,29 +2,33 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rady Wars | حروب الرضي</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4b5320">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2590/2590510.png">
 </head>
 <body>
+
     <header class="status-bar">
-        <div class="rank-box">
-            <span id="rank-display">الرتبة: ملازم</span>
+        <div class="top-left">
+            <div id="rank-display" class="rank-badge">الرتبة: ملازم</div>
+            <div onclick="toggleSettings()" class="settings-icon">⚙️</div>
         </div>
         <div class="resources">
-            <div class="res">💰 <span id="gold-count">500</span></div>
-            <div class="res">⚙️ <span id="iron-count">200</span></div>
+            <div class="res-item">💰 <span id="gold-count">0</span></div>
+            <div class="res-item">⚙️ <span id="iron-count">0</span></div>
         </div>
     </header>
 
-    <main class="battlefield">
-        <div class="base-container">
+    <main class="war-zone">
+        <div class="base-view">
             <div class="base-icon">🏰</div>
-            <h1 class="base-name">قاعدة الرضي الحربية</h1>
-            <div class="army-stats">
-                <span>🪖 قوة المشاة: <b id="army-count">0</b></span>
+            <h2 id="base-level-text">المقـر الرئيسـي (المستوى 1)</h2>
+            <div class="army-display">
+                <span class="soldier-icon">🪖</span>
+                <div class="army-count-text">قوة المشاة: <b id="army-count">0</b></div>
             </div>
         </div>
     </main>
@@ -32,22 +36,33 @@
     <footer class="command-panel">
         <button onclick="trainSoldier()" class="cmd-btn">
             <span class="icon">🎖️</span>
-            <span class="text">تدريب جندي</span>
-            <small>(50 ذهب)</small>
+            <span class="label">تدريب جندي</span>
+            <small>50 ذهب</small>
         </button>
         
         <button onclick="upgradeBase()" class="cmd-btn">
             <span class="icon">🛠️</span>
-            <span class="text">تطوير القاعدة</span>
-            <small>(200 حديد)</small>
+            <span class="label">تطوير القاعدة</span>
+            <small id="upgrade-cost">200 حديد</small>
         </button>
 
         <button onclick="startMission()" class="cmd-btn attack">
             <span class="icon">⚔️</span>
-            <span class="text">غزو منطقة</span>
+            <span class="label">غزو منطقة</span>
+            <small>تحتاج 10 جنود</small>
         </button>
     </footer>
 
     <script src="game.js"></script>
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Service Worker Registered'))
+                .catch(err => console.log('Service Worker Failed', err));
+            });
+        }
+    </script>
 </body>
 </html>
