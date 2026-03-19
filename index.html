@@ -26,42 +26,46 @@
         <div class="base-view">
             <div class="base-icon">🏰</div>
             <h2 id="base-level-text">المقـر الرئيسـي (المستوى 1)</h2>
-            <div class="army-display">
-                <span class="soldier-icon">🪖</span>
-                <div class="army-count-text">قوة المشاة: <b id="army-count">0</b></div>
+            
+            <div id="army-barracks" class="barracks">
+                </div>
+
+            <div class="army-stats-panel">
+                <div class="stat-item">🪖 جنود: <b id="soldiers-count">0</b></div>
+                <div class="stat-item">🚜 مدرعات: <b id="tanks-count">0</b></div>
             </div>
         </div>
     </main>
 
     <footer class="command-panel">
-        <button onclick="trainSoldier()" class="cmd-btn">
-            <span class="icon">🎖️</span>
-            <span class="label">تدريب جندي</span>
-            <small>50 ذهب</small>
-        </button>
-        
-        <button onclick="upgradeBase()" class="cmd-btn">
-            <span class="icon">🛠️</span>
-            <span class="label">تطوير القاعدة</span>
-            <small id="upgrade-cost">200 حديد</small>
-        </button>
+        <div class="tab-buttons">
+            <button onclick="switchTab('army')" class="active">بناء الجيش</button>
+            <button onclick="switchTab('upgrade')">تطوير</button>
+        </div>
 
-        <button onclick="startMission()" class="cmd-btn attack">
-            <span class="icon">⚔️</span>
-            <span class="label">غزو منطقة</span>
-            <small>تحتاج 10 جنود</small>
-        </button>
+        <div id="army-tab" class="command-content active-tab">
+            <button onclick="trainSoldier()" class="cmd-btn">
+                <span class="icon">🎖️</span> <span class="label">جندي</span> <small>50 ذهب</small>
+            </button>
+            <button onclick="buildTank()" class="cmd-btn">
+                <span class="icon">🚜</span> <span class="label">مدرعة</span> <small>200 حديد</small>
+            </button>
+        </div>
+
+        <div id="upgrade-tab" class="command-content">
+            <button onclick="upgradeBase()" class="cmd-btn">
+                <span class="icon">🛠️</span> <span class="label">تطوير القاعدة</span> <small>200 حديد</small>
+            </button>
+            <button onclick="startMission()" class="cmd-btn attack">
+                <span class="icon">⚔️</span> <span class="label">غزو منطقة</span> <small>قوة: 50</small>
+            </button>
+        </div>
     </footer>
 
     <script src="game.js"></script>
-    
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                .then(reg => console.log('Service Worker Registered'))
-                .catch(err => console.log('Service Worker Failed', err));
-            });
+            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js'); });
         }
     </script>
 </body>
